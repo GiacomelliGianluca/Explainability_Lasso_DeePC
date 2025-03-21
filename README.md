@@ -29,7 +29,7 @@ The first-principle model of the DC motor connected to an unbalanced disk system
 ```
 being the angular position $\theta_t$ and the input voltage $v_t$ the measured output $y_t =\theta_t$ and applied input $u_t = v_t$, respectively. 
 
-Toward an explainable Lasso-based DeePC, we construct a two-block grouped Hankel matrix by utilizing the (raw) input/output data gathered around the system's operating points and stored in [`data`](data).
+Toward an explainable Lasso-based DeePC, we construct a two-block grouped Hankel matrix by utilizing the (raw) input/output data gathered around the system's operating points (OPs) and stored in [`data`](data).
 
 <p align="center">
   <img src="imgs/gH.png" width="60%" alt='A two-block grouped Hankel data structure'>
