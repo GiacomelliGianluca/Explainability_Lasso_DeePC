@@ -35,7 +35,7 @@ Toward an explainable Lasso-based DeePC, we construct a two-block grouped Hankel
   <img src="imgs/grouped_Hankel.png" width="60%" alt='A two-block grouped Hankel data structure'>
 </p>
 
-The following gifs showcase the reference tracking performed by a Lasso-DeePC formulation with the above data structure.
+The following gif showcases the reference tracking performed by a Lasso-DeePC formulation with the above data structure.
 
 <p align="center">
      <img src="gifs/IO_tr_C12.gif" alt="iLasso-DeePC trajectory tracking, data selection, and BPIs">
