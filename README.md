@@ -32,7 +32,7 @@ being the angular position $\theta_t$ and the input voltage $v_t$ the measured o
 Toward an explainable Lasso-based DeePC, we construct a two-block grouped Hankel matrix by utilizing the (raw) input/output data gathered around the system's operating points (OPs) and stored in [`data`](data).
 
 <p align="center">
-  <img src="imgs/gH.png" width="60%" alt='A two-block grouped Hankel data structure'>
+  <img src="imgs/grouped_Hankel.png" width="60%" alt='A two-block grouped Hankel data structure'>
 </p>
 
 The following gifs compare the reference tracking performed by a Lasso-DeePC formulation with the above data structure and an unstructured Hankel.
