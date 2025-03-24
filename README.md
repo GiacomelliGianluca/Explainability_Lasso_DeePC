@@ -20,16 +20,16 @@ To clone this repository, see https://nl.mathworks.com/help/simulink/ug/clone-gi
 
 ## Benchmark case study: the unbalanced disk
 
-The first-principle model of the DC motor connected to an unbalanced disk system is described as follows
+This system is described by the following difference equation
 
 ```math
 \begin{equation}
-    \ddot{\theta}_t = \frac{mgl}{J}\text{cos}(\theta_t)-\frac{1}{\tau}\dot{\theta}_t + \frac{K_m}{\tau}v_t,
+        \ddot{y}(t)=\alpha_{1}\cos{(y(t))}+\alpha_{2}\dot{y}(t)+\alpha_{3}u(t),
 \end{equation}
 ```
-being the angular position $\theta_t$ and the input voltage $v_t$ the measured output $y_t =\theta_t$ and applied input $u_t = v_t$, respectively. 
+being $y_t$ and $u_t$ the angular position and the input voltage, respectively. 
 
-Toward an explainable Lasso-based DeePC, we construct a two-block grouped Hankel matrix by utilizing the (raw) input/output data gathered around the system's operating points (OPs) and stored in [`data`](data).
+Toward an explainable Lasso-based DeePC, we construct a two-block Hankel matrix by utilizing the (raw) input/output data gathered around the system's operating points (OPs) and stored in [`data`](data).
 
 <p align="center">
   <img src="imgs/grouped_Hankel.png" width="60%" alt='A two-block grouped Hankel data structure'>
