@@ -29,10 +29,10 @@ This system is described by the following difference equation
 ```
 being $y_t$ and $u_t$ the angular position and the input voltage, respectively. 
 
-Toward an explainable Lasso-based DeePC, we construct a two-block Hankel matrix by utilizing the (raw) input/output data gathered around the system's operating points (OPs) and stored in [`data`](data).
+Toward an explainable Lasso-based DeePC, we construct a two-blocks Hankel matrix by utilizing the (raw) input/output data gathered around the system's operating points (OPs) and stored in [`data`](data).
 
 <p align="center">
-  <img src="imgs/grouped_Hankel.png" width="60%" alt='A two-block grouped Hankel data structure'>
+  <img src="imgs/grouped_Hankel.png" width="60%" alt='A two-blocks Hankel data structure'>
 </p>
 
 The following gif showcases the reference tracking performed by a Lasso-DeePC formulation with the above data structure.
