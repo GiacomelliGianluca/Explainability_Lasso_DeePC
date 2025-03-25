@@ -23,7 +23,7 @@ h_title = title(['Data Structure - ', string_matr_type, ' matrix'],'Interpreter'
 xlim([1 931]);
 xticks([1 200 400 600 800]);
 ylim([1 70]);
-yticks([1 10 20 30 40])
+yticks([1 20 40 60])
 ax = gca;
 ax.YDir = 'reverse';
 ax.XAxisLocation = 'top';

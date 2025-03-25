@@ -18,7 +18,7 @@ plt_set.fontname = 'Times';
 plt_set.fontsize = 12;
 
 % Dataset directory
-dataset_dir = '..\data\';
+dataset_dir = 'Please insert data directory';
 
 %% System %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -44,10 +44,10 @@ th       =       [g;J;m;k_m;l;tau];
 
 % Selecting the datasest to build the Hankel 
 
-string_data_hankel = 'Data_017.mat';
+% string_data_hankel = 'Data_017.mat';
 % string_data_hankel = 'Data_017_157_multiple_transitions.mat';
 % string_data_hankel = 'Data_017_157_single_transition.mat';
-% string_data_hankel = 'Data_017_297_multiple_transitions.mat';
+string_data_hankel = 'Data_017_297_multiple_transitions.mat';
 % string_data_hankel = 'Data_017_297_single_transition.mat';
 Data_u_model = cell2mat(struct2cell(load([dataset_dir,string_data_hankel], "Data_u")));
 Data_y_model = cell2mat(struct2cell(load([dataset_dir,string_data_hankel], "Data_y")));
@@ -64,7 +64,7 @@ Data = [Data_u_model' Data_y_model'];
 % Plotting the data distribution
 % Declaring the Operating Points (in deg) 
 OPs = [10;
-       90];
+       170];
 
 % Declaring the condition
 cond.y = mean(OPs);
@@ -140,6 +140,9 @@ x_spline = [1 N_ini/4  3/4*N_ini N_ini];
 % Defining the reference vector
 y_r_ini = spline(x_spline, y_spline, 1:1:N_ini);
 
+% % Input reference (past horizon steps) (unused, see R_MPC)
+u_r_ini = computing_u_equil_pen(y_r_ini, th);
+
 % Periods of the reference signal 
 N_r_1 = round(L/2); % Before the switch 
 N_r_2 = N_c - N_r_1; % After the switch 
@@ -148,7 +151,7 @@ N_r_2 = N_c - N_r_1; % After the switch
 % Output reference sequence  
 y_r_1_deg = 10*ones(1,N_r_1);
 y_r_1 = pi/180*y_r_1_deg;
-y_r_2_deg = 90*ones(1, N_r_2);
+y_r_2_deg = 170*ones(1, N_r_2);
 y_r_2 = pi/180*y_r_2_deg;
 % y_r_ch: output reference control horizon
 y_r_ch = [y_r_1     y_r_2];
@@ -258,7 +261,7 @@ for i=1:length(lambda_g)
             % MPC case 
             if k == 1
                 % MPC for the trajectory of the past horizon (prediction horizon N_ini)
-                [u_c_seq, ~, ~] = MPC(zeros(1,length(y_r_ini)), y_r_ini, y_sim(k, :)', th, n_u, n_y, n_x, Q_MPC, R_MPC, N_ini, tau_s, N_ini);
+                [u_c_seq, ~, ~] = MPC(u_r_ini, y_r_ini, y_sim(k, :)', th, n_u, n_y, n_x, Q_MPC, R_MPC, N_ini, tau_s, N_ini);
              end
              % Update MPC control actions
              u{i,1}(k) = u_c_seq(1,((k-1)*n_u+1):n_u*k);
