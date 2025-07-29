@@ -42,7 +42,7 @@ function [J_all, J_tr, J_g, g_opt, u_opt_seq, y_opt_seq] = DeePC_y_f_lambda_g(u_
                 + (u(((ii-1)*n_u+1):ii*n_u, 1) - u_r(((ii-1)*n_u+1):ii*n_u, 1)).' * R * (u(((ii-1)*n_u+1):ii*n_u, 1) - u_r(((ii-1)*n_u+1):ii*n_u, 1));
         end
         % Adding the regulizer at the cost function
-        J = J + lambda_g*norm(g,1) + lambda_2*sum(g.*g);        
+        J = J + lambda_g*norm(g,1) + lambda_2*g'*g;        
 
         minimize(J)
         subject to
