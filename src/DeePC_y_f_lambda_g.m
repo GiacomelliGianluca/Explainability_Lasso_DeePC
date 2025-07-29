@@ -20,8 +20,6 @@ function [J_all, J_tr, J_g, g_opt, u_opt_seq, y_opt_seq] = DeePC_y_f_lambda_g(u_
     % Future Horizon
     L_h = N_h-N_ini;
 
-    lambda_2 = eps;
-
 
     % Start cvx
     cvx_begin quiet
@@ -42,7 +40,7 @@ function [J_all, J_tr, J_g, g_opt, u_opt_seq, y_opt_seq] = DeePC_y_f_lambda_g(u_
                 + (u(((ii-1)*n_u+1):ii*n_u, 1) - u_r(((ii-1)*n_u+1):ii*n_u, 1)).' * R * (u(((ii-1)*n_u+1):ii*n_u, 1) - u_r(((ii-1)*n_u+1):ii*n_u, 1));
         end
         % Adding the regulizer at the cost function
-        J = J + lambda_g*norm(g,1) + lambda_2*g'*g;        
+        J = J + lambda_g*norm(g,1);        
 
         minimize(J)
         subject to
